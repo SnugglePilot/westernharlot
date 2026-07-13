@@ -1,0 +1,15 @@
+# Global site strings: nav, badge, footer.
+name: THE WESTERN HARLOT
+badge: 🇨🇦
+nav:
+  - label: The Build
+    href: "#build"
+  - label: Catalogue
+    href: "#catalogue"
+  - label: Field Log
+    href: "#log"
+footer_line: 2024 Crosstrek Wilderness · Cascadia
+build_heading: "// the build"
+catalogue_heading: "// upgrade catalogue"
+catalogue_note: items · all prices in CAD
+log_heading: "// field log"

@@ -1,0 +1,137 @@
+---
+layout: default
+---
+
+  <!-- ================= HERO ================= -->
+  <div id="top" style="position:relative;height:92vh;min-height:640px;overflow:hidden;background:#0a0a0c;">
+    <img src="{{ site.data.hero.image }}" alt="{{ site.data.hero.image_alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ site.data.hero.image_position }};">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,12,.55) 0%,rgba(10,10,12,.12) 34%,rgba(10,10,12,.55) 72%,rgba(10,10,12,.98) 100%);"></div>
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,0) 0px,rgba(0,0,0,0) 2px,rgba(0,0,0,.14) 3px,rgba(0,0,0,0) 4px);mix-blend-mode:multiply;"></div>
+    <div style="position:absolute;top:26px;left:26px;width:34px;height:34px;border-left:2px solid #ff2d88;border-top:2px solid #ff2d88;"></div>
+    <div style="position:absolute;top:26px;right:26px;width:34px;height:34px;border-right:2px solid #ff2d88;border-top:2px solid #ff2d88;"></div>
+
+    <div class="hero-copy" style="position:absolute;left:40px;bottom:180px;max-width:640px;">
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(56px,9vw,108px);line-height:.9;letter-spacing:-.02em;text-shadow:0 0 24px rgba(255,45,136,.5),0 0 2px rgba(255,45,136,.9);"><span style="display:block;font-size:.42em;letter-spacing:.12em;font-weight:600;color:#ff2d88;margin-bottom:6px;text-shadow:none;">{{ site.data.hero.kicker }}</span>{% for line in site.data.hero.title_lines %}{{ line }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}</div>
+      <div style="display:inline-block;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.32em;color:#ff2d88;text-transform:uppercase;margin-top:20px;background:rgba(10,10,12,.6);backdrop-filter:blur(4px);padding:7px 12px;border-left:2px solid #ff2d88;">{{ site.data.hero.tagline }}</div>
+    </div>
+
+    <div class="hero-stats" style="position:absolute;left:40px;right:40px;bottom:44px;display:flex;flex-wrap:wrap;border:1px solid rgba(255,45,136,.4);background:rgba(10,10,12,.5);backdrop-filter:blur(4px);">
+      {% for stat in site.data.hero.stats %}
+      <div style="flex:1;min-width:140px;padding:16px 22px;border-right:1px solid rgba(255,45,136,.22);">
+        <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:#8a8a92;text-transform:uppercase;">{{ stat.label }}</div>
+        <div style="font-weight:700;font-size:28px;{% if stat.accent %}color:#ff2d88;{% endif %}">{{ stat.value }}<span style="font-size:15px;color:#c9c7c2;">{{ stat.suffix }}</span></div>
+      </div>
+      {% endfor %}
+      <div style="flex:1;min-width:180px;display:flex;">
+        <a href="{{ site.data.hero.cta.href }}" class="cta" style="flex:1;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.12em;color:#0a0a0c;background:#ff2d88;padding:16px 20px;text-transform:uppercase;">{{ site.data.hero.cta.label }}</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= THE BUILD (story) ================= -->
+  <div id="build" class="pad" style="max-width:1240px;margin:0 auto;padding:110px 40px 90px;scroll-margin-top:70px;">
+    <div style="font-family:'Space Mono',monospace;font-size:18px;letter-spacing:.28em;color:#ff2d88;text-transform:uppercase;">{{ site.data.site.build_heading }}</div>
+    <div style="margin-top:26px;">
+      <div class="build-fig" style="float:right;width:min(42%,440px);margin:0 0 20px 40px;border:1px solid #26262c;">
+        <div style="position:relative;">
+          <img src="{{ site.data.build.figure.image }}" alt="{{ site.data.build.figure.alt }}" style="width:100%;display:block;">
+          <div style="position:absolute;left:12px;bottom:12px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;color:#f4f2ee;background:rgba(10,10,12,.72);padding:6px 10px;">{{ site.data.build.figure.caption }}</div>
+        </div>
+        <div style="border-top:1px solid #26262c;display:flex;">
+          {% for stat in site.data.build.figure.stats %}
+          <div style="flex:1;padding:14px 16px;{% unless forloop.last %}border-right:1px solid #26262c;{% endunless %}"><div style="font-family:'Space Mono',monospace;font-size:11px;color:#8a8a92;letter-spacing:.14em;">{{ stat.label }}</div><div style="font-weight:600;font-size:15px;margin-top:2px;">{{ stat.value }}</div></div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="prose">
+{% capture build_intro %}{% include_relative content/build.md %}{% endcapture %}{{ build_intro | markdownify }}
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+
+  <!-- ================= CATALOGUE ================= -->
+  {% assign ups = site.upgrades | sort: "order" %}
+  <div id="catalogue" style="border-top:1px solid #1e1e24;background:#0c0c10;scroll-margin-top:60px;">
+    <div class="pad" style="max-width:1240px;margin:0 auto;padding:90px 40px 100px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;">
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:18px;letter-spacing:.28em;color:#ff2d88;text-transform:uppercase;">{{ site.data.site.catalogue_heading }}</div>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:13px;color:#8a8a92;"><span id="count">{{ ups | size }}</span> {{ site.data.site.catalogue_note }}</div>
+      </div>
+
+      <!-- filters (built by assets/js/catalogue.js from the cards below) -->
+      <div id="filters" style="display:flex;flex-wrap:wrap;gap:8px;margin:34px 0 32px;"></div>
+
+      <!-- grid -->
+      <div id="grid" class="grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px;">
+        {% for up in ups %}
+        <div class="card" data-cat="{{ up.category }}">
+          <div class="card-head">
+            <span class="card-cat">{{ up.category }}</span>
+            <span class="card-part">{{ up.part }}</span>
+          </div>
+          <div class="card-body">
+            <div class="card-brand">{{ up.brand }}</div>
+            <h3 class="card-name">{{ up.title }}</h3>
+            <div class="card-why">{{ up.content | markdownify }}</div>
+            <div class="card-specs">
+              {% for spec in up.specs %}<span class="card-spec">{{ spec }}</span>{% endfor %}
+              {% if up.weight %}<span class="card-spec">{{ up.weight }}</span>{% endif %}
+            </div>
+            <div class="card-foot">
+              <div>
+                <div class="card-price">{{ up.price }}</div>
+                <div class="card-install">{{ up.install }}</div>
+              </div>
+              <a class="shop" href="{{ up.link }}" target="_blank" rel="noopener">Shop →</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FIELD LOG (blog) ================= -->
+  <div id="log" style="border-top:1px solid #1e1e24;scroll-margin-top:60px;">
+    <div class="pad" style="max-width:1240px;margin:0 auto;padding:90px 40px 40px;">
+      <div style="font-family:'Space Mono',monospace;font-size:18px;letter-spacing:.28em;color:#ff2d88;text-transform:uppercase;">{{ site.data.site.log_heading }}</div>
+    </div>
+
+    {% assign posts = site.log | sort: "date" | reverse %}
+    {% for post in posts %}
+    {% assign pos = post.position | default: "center" %}
+    {% if post.style == "split" or post.style == "split-reversed" %}
+    <div class="split" style="display:grid;grid-template-columns:1fr 1fr;min-height:520px;{% unless forloop.first %}border-top:1px solid #1e1e24;{% endunless %}">
+      {% if post.style == "split" %}
+      <div class="split-img" style="position:relative;overflow:hidden;background:#0c0c10;">
+        <img src="{{ post.image }}" alt="{{ post.image_alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ pos }};">
+      </div>
+      {% endif %}
+      <div style="padding:clamp(32px,5vw,72px);display:flex;flex-direction:column;justify-content:center;background:#0a0a0c;{% if post.style == 'split-reversed' %}order:1;{% endif %}">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;color:#ff2d88;text-transform:uppercase;">{{ post.date | date: "%Y.%m.%d" }} · {{ post.location }}</div>
+        <h3 style="font-weight:700;font-size:clamp(26px,3.4vw,40px);line-height:1.08;margin:12px 0 12px;">{{ post.title }}</h3>
+        <div class="log-body-split">{{ post.content | markdownify }}</div>
+      </div>
+      {% if post.style == "split-reversed" %}
+      <div class="split-img" style="position:relative;overflow:hidden;background:#0c0c10;order:2;">
+        <img src="{{ post.image }}" alt="{{ post.image_alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ pos }};">
+      </div>
+      {% endif %}
+    </div>
+    {% else %}
+    <div style="position:relative;height:78vh;min-height:560px;overflow:hidden;{% if forloop.first %}margin-top:36px;{% else %}border-top:1px solid #1e1e24;{% endif %}">
+      <img src="{{ post.image }}" alt="{{ post.image_alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ pos }};">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,12,.15),rgba(10,10,12,.9));"></div>
+      <div class="log-caption" style="position:absolute;left:40px;bottom:44px;max-width:640px;">
+        <div style="font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;color:#ff2d88;text-transform:uppercase;">{{ post.date | date: "%Y.%m.%d" }} · {{ post.location }}</div>
+        <h3 style="font-weight:700;font-size:clamp(28px,4vw,44px);line-height:1.05;margin:12px 0 10px;">{{ post.title }}</h3>
+        <div class="log-body">{{ post.content | markdownify }}</div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>

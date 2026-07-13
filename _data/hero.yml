@@ -1,0 +1,23 @@
+# Hero section: headline, image, and the stats bar.
+kicker: THE
+title_lines:
+  - WESTERN
+  - HARLOT
+tagline: 2024 Subaru Crosstrek Wilderness · Cascadia
+image: assets/hero.jpeg
+image_alt: Crosstrek in a snowy Cascade clearing
+image_position: center 60%
+stats:
+  - label: Clearance
+    value: "11.3"
+    suffix: in · 287mm
+    accent: true
+  - label: Upgrades
+    value: "$20"
+    suffix: k CAD
+  - label: Added weight
+    value: "+380"
+    suffix: lb
+cta:
+  label: Explore the build →
+  href: "#catalogue"

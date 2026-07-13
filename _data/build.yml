@@ -1,0 +1,11 @@
+# "The Build" section figure (the floated photo card with CAR / UPGRADES stats).
+# The intro text itself lives in content/build.md.
+figure:
+  image: assets/hillside.jpeg
+  alt: Crosstrek on a foggy rocky hillside
+  caption: FIG.01 — CASCADE FSR
+  stats:
+    - label: CAR
+      value: ~$38K
+    - label: UPGRADES
+      value: ~$20K

@@ -1,0 +1,16 @@
+title: The Western Harlot
+description: A 2024 Subaru Crosstrek Wilderness built for Cascadia's forest service roads.
+url: "https://snugglepilot.github.io"
+baseurl: "/westernharlot"
+
+collections:
+  upgrades:
+    output: false
+  log:
+    output: false
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
